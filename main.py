@@ -49,3 +49,8 @@ def user_infos(user_addr: str, db: Session = Depends(get_db)):
 async def create_upload_file(file: UploadFile):
     print(file.filename)
     return {"filename": file.filename}
+
+
+@app.post("/uploadfiles/")
+async def create_upload_files(files: list[UploadFile]):
+    return {"filenames": [file.filename for file in files]}
