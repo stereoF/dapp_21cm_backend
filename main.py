@@ -21,6 +21,11 @@ async def root():
     return {"message": "Hello World"}
 
 
+@app.post("/uploadfiles/")
+async def create_upload_files(files: list[UploadFile]):
+    print([file.filename for file in files])
+    return {"filenames": [file.filename for file in files]}
+
 @app.post("/uploadfile/")
 async def create_upload_file(file: UploadFile):
     print(file.filename)
