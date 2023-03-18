@@ -1,19 +1,19 @@
-from typing import List
-
+from typing import List, Union
+from datetime import datetime
 from pydantic import BaseModel
 
 
 class JournalBase(BaseModel):
-    addr: str
+    address: str
     jname: str
     first_cate: str
     sec_cate: str
     third_cate: str
-    remark: str
+    remark: Union[str, None] = None
 
 
 class JournalCreate(JournalBase):
-    subject_index: int
+    pass
 
 
 class Journal(JournalBase):
@@ -26,8 +26,6 @@ class UserBase(BaseModel):
     uname: str
     unit: str
     email: str
-    type: int
-    journal_addr: str
 
 
 class UserCreate(UserBase):
@@ -35,8 +33,6 @@ class UserCreate(UserBase):
 
 
 class User(UserBase):
-    # journal_infos: Journal
-
     class Config:
         orm_mode = True
 
@@ -51,4 +47,47 @@ class FollowCreate(FollowBase):
 
 
 class Follow(FollowBase):
+    journal: Journal
+
+    class Config:
+        orm_mode = True
+
+
+class AdminBase(BaseModel):
+    user_addr: str
+    type: int
+    journal_addr: str
+
+
+class AdminCreate(AdminBase):
+    pass
+
+
+class Admin(AdminBase):
+    user: User
+
+    class Config:
+        orm_mode = True
+
+
+class ArticleBase(BaseModel):
+    cid: str
+    author_addr: str
+    c_status: int
+    descs: str
+    title: str
+    author_info: str
+    abstract: str
+    submit_time: datetime
+    prev_cid: str
+    next_cid: str
+    journal_addr: str
+
+
+class Article(ArticleBase):
+    class Config:
+        orm_mode = True
+
+
+class ArticleCreate(ArticleBase):
     pass
