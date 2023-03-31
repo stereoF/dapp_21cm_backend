@@ -6,10 +6,12 @@ from pydantic import BaseModel
 class JournalBase(BaseModel):
     address: str
     jname: str
-    first_cate: str
-    sec_cate: str
-    third_cate: str
+    first_cate: Union[str, None]
+    sec_cate: Union[str, None] = None
+    third_cate: Union[str, None] = None
     remark: Union[str, None] = None
+    recommend: int = 0
+    journal_type: str = "journal"
 
 
 class JournalCreate(JournalBase):

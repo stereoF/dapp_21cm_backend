@@ -1,6 +1,7 @@
-from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, TEXT, DATETIME
+from sqlalchemy import Boolean, Column, Integer, String, TEXT, DATETIME
 from sqlalchemy.orm import relationship
 from .database import Base
+# from database import Base, engine
 
 
 class User(Base):
@@ -10,7 +11,7 @@ class User(Base):
     uname = Column(String(80))
     unit = Column(String(100))
     email = Column(String(80))
-    admin = relationship("Admin", back_populates="user")
+    # admin = relationship("Admin", back_populates="user")
 
 
 class Journal(Base):
@@ -23,24 +24,29 @@ class Journal(Base):
     third_cate = Column(String(100))
     subject_index = Column(Integer, autoincrement=True)
     remark = Column(TEXT)
-    follow = relationship("Follow", back_populates="journal")
+    recommend = Column(Integer)
+    journal_type = Column(String(80))
+    # follow = relationship("Follow", back_populates="journal")
 
 
 class Follow(Base):
     __tablename__ = "journal_follow"
 
     user_addr = Column(String(80), primary_key=True)
-    journal_addr = Column(String(80), ForeignKey("journal_infos.address"), primary_key=True)
-    journal = relationship("Journal", back_populates="follow")
+    # journal_addr = Column(String(80), ForeignKey("journal_infos.address"), primary_key=True)
+    journal_addr = Column(String(80), primary_key=True)
+    # journal = relationship("Journal", back_populates="follow")
 
 
 class Admin(Base):
     __tablename__ = "journal_admins"
 
-    user_addr = Column(String(80), ForeignKey("user_info.addr"), primary_key=True)
+    # user_addr = Column(String(80), ForeignKey("user_info.addr"), primary_key=True)
+    user_addr = Column(String(80), primary_key=True)
     type = Column(Integer)
-    journal_addr = Column(String(80), ForeignKey("journal_infos.address"), primary_key=True)
-    user = relationship("User", back_populates="admin")
+    # journal_addr = Column(String(80), ForeignKey("journal_infos.address"), primary_key=True)
+    journal_addr = Column(String(80), primary_key=True)
+    # user = relationship("User", back_populates="admin")
 
 
 class Article(Base):
@@ -56,7 +62,8 @@ class Article(Base):
     submit_time = Column(DATETIME)
     prev_cid = Column(String(80))
     next_cid = Column(String(80))
-    journal_addr = Column(String(80), ForeignKey("journal_infos.address"))
+    # journal_addr = Column(String(80), ForeignKey("journal_infos.address"))
+    journal_addr = Column(String(80))
 
 
 

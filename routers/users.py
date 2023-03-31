@@ -57,7 +57,7 @@ def user_follow_info(user_addr: str, db: Session = Depends(get_db)):
 @router.get("/journal/info", response_model=List[schemas.Journal])
 def journal_info(db: Session = Depends(get_db)):
     """
-    所有的合约地址及详细信息，用户可以选择其中一个进度或关注
+    所有的合约地址及详细信息，用户可以选择其中一个进入或关注
     :param db:
     :return:
     """
