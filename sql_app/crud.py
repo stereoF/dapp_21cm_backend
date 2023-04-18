@@ -56,9 +56,9 @@ def create_admin(db: Session, admin: schemas.AdminCreate):
 
 
 def get_articles(db: Session, cid: str, author_addr: str, status: str, journal_addr: str, skip: int, limit: int):
-    return db.query(models.Article).filter(or_(models.Article.cid == cid,
-                                               models.Article.author_addr == author_addr,
-                                               models.Article.c_status == status),
+    return db.query(models.Article).filter(models.Article.cid == cid if cid is not None else 1 == 1,
+                                           models.Article.author_addr == author_addr if author_addr is not None else 1 == 1,
+                                           models.Article.c_status == status if status is not None else 1 == 1,
                                            models.Article.journal_addr == journal_addr).offset(skip).limit(limit).all()
 
 
