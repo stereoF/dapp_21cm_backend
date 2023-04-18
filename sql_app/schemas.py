@@ -75,7 +75,7 @@ class Admin(AdminBase):
 class ArticleBase(BaseModel):
     cid: str
     author_addr: str
-    c_status: int
+    c_status: str
     descs: str
     title: str
     author_info: str

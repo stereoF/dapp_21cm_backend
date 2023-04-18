@@ -125,7 +125,7 @@ def admin_create(admin: schemas.AdminCreate, db: Session = Depends(get_db)):
 
 @router.get("/article/info", response_model=List[schemas.Article])
 def article_info(cid: str = Query(default=None), author_addr: str = Query(default=None),
-                 status: int = Query(default=None), journal_addr: str = Query(default=Required),
+                 status: str = Query(default='Pending'), journal_addr: str = Query(default=Required),
                  skip: int = Query(default=0), limit: int = Query(default=10),
                  db: Session = Depends(get_db)):
     """

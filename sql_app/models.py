@@ -54,7 +54,7 @@ class Article(Base):
 
     cid = Column(String(80), primary_key=True)
     author_addr = Column(String(80))
-    c_status = Column(Integer)
+    c_status = Column(String(80))
     descs = Column(TEXT)
     title = Column(String(200))
     author_info = Column(String(200))
@@ -67,4 +67,3 @@ class Article(Base):
 
 
 
-# Base.metadata.create_all(engine)

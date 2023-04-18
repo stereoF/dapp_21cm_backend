@@ -55,7 +55,7 @@ def create_admin(db: Session, admin: schemas.AdminCreate):
     return db_admin
 
 
-def get_articles(db: Session, cid: str, author_addr: str, status: int, journal_addr: str, skip: int, limit: int):
+def get_articles(db: Session, cid: str, author_addr: str, status: str, journal_addr: str, skip: int, limit: int):
     return db.query(models.Article).filter(or_(models.Article.cid == cid,
                                                models.Article.author_addr == author_addr,
                                                models.Article.c_status == status),
