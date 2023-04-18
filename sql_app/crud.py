@@ -78,3 +78,7 @@ def create_articles(db: Session, article: schemas.ArticleCreate):
     db.commit()
     db.refresh(db_article)
     return db_article
+
+
+def get_article_by_cid(db: Session, cid: str, journal_addr: str):
+    return db.query(models.Article).filter(models.Article.cid == cid, models.Article.journal_addr == journal_addr).first()

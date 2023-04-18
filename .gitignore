@@ -1,5 +1,4 @@
 .env
 *.pyc
 **/__pycache__
-*.db    # sqlite database
-test.db
+*.db 

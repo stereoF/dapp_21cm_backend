@@ -157,3 +157,18 @@ def article_create(article: schemas.ArticleCreate, db: Session = Depends(get_db)
     if article is None:
         raise HTTPException(status_code=404, detail="article not found")
     return article
+
+
+@router.get("/article/info/cid", response_model=schemas.Article)
+def article_info(cid: str = Query(default=Required), journal_addr: str = Query(default=Required), db: Session = Depends(get_db)):
+    """
+    根据cid查询一条文章信息
+    :param cid:
+    :param journal_addr:
+    :param db:
+    :return:
+    """
+    articles = crud.get_article_by_cid(db, cid, journal_addr)
+    if articles is None:
+        raise HTTPException(status_code=404, detail="articles not found")
+    return articles
