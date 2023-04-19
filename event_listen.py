@@ -25,7 +25,7 @@ def handle_event(event):
     print(Web3.to_json(event))
     submitAddress = event.args.submitAddress
     submitTime = event.args.submitTime
-    prevCID = event.args.prevCID
+    # prevCID = event.args.prevCID
     fileCID = event.args.fileCID
     keyInfo = event.args.keyInfo
     description = event.args.description
@@ -69,6 +69,18 @@ def create_desci_listeners(loop):
         loop.create_task(log_loop(submit_event_filter, 2))
 
 
+def create_preprint_listeners(loop):
+    # loop = asyncio.get_running_loop()
+    with open(path + '/contracts/preprint/contract-address.json', 'r') as f:
+        address_file = json.load(f)
+
+    for obj in address_file:
+        address = obj['address']
+        contract = w3.eth.contract(address=address, abi=preprint_abi)
+        submit_event_filter = contract.events.Submit.create_filter(fromBlock='latest')
+        loop.create_task(log_loop(submit_event_filter, 2))
+
+
 # when main is called
 # create a filter for the latest block and look for the "PairCreated" event for the uniswap factory contract
 # run an async loop
@@ -78,6 +90,7 @@ def main():
     loop = asyncio.new_event_loop()
     print('Listening for events...')
     create_desci_listeners(loop)
+    create_preprint_listeners(loop)
     try:
         loop.run_forever()
     except Exception as e:

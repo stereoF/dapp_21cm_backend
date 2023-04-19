@@ -63,7 +63,7 @@ class Article(Base):
     prev_cid = Column(String(80))
     next_cid = Column(String(80))
     # journal_addr = Column(String(80), ForeignKey("journal_infos.address"))
-    journal_addr = Column(String(80))
+    journal_addr = Column(String(80), primary_key=True)
 
 
 
