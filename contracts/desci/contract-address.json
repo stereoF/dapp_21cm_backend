@@ -1,27 +1,7 @@
 [
   {
     "name": "Future",
-    "address": "0x7F194198aa660236E49E50B3c44649307e776104",
-    "blockNumber": 723
-  },
-  {
-    "name": "Industrial Data Science",
-    "address": "0xe154A6BB6Bf054Da54D0216B4767810656bd2F5f",
-    "blockNumber": 724
-  },
-  {
-    "name": "PKU Space Science Review",
-    "address": "0x8BEc2713948bed32b0bE42c588C217D24C8CE4Cd",
-    "blockNumber": 725
-  },
-  {
-    "name": "Complex system",
-    "address": "0xE3bBb3b33217B3bFAAFfBc040Ae7cb352Fcca38e",
-    "blockNumber": 726
-  },
-  {
-    "name": "Decentralization",
-    "address": "0x2400734E6A723F80C876f5d7751A8bB76bcC1762",
-    "blockNumber": 727
+    "address": "0xE92772E1e24495F722739b9A4bb05aD957549bC5",
+    "blockNumber": null
   }
 ]
