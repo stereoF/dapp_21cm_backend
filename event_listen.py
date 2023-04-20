@@ -10,7 +10,8 @@ from sql_app.database import SessionLocal
 
 # Connect to a local Ethereum node
 # w3 = Web3(HTTPProvider('http://172.27.192.1:7545'))
-w3 = Web3(HTTPProvider('"https://rpc-mumbai.maticvigil.com"'))
+alchemy_url = "https://polygon-mumbai.g.alchemy.com/v2/IEPxbD3EJDjg3i9JrKy0qfuJi5IYoKX6"
+w3 = Web3(Web3.HTTPProvider(alchemy_url))
 path = os.getcwd()
 
 # Define the contract ABI and address
