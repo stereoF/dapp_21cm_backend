@@ -9,7 +9,8 @@ from sql_app.models import Article
 from sql_app.database import SessionLocal
 
 # Connect to a local Ethereum node
-w3 = Web3(HTTPProvider('http://172.27.192.1:7545'))
+# w3 = Web3(HTTPProvider('http://172.27.192.1:7545'))
+w3 = Web3(HTTPProvider('"https://rpc-mumbai.maticvigil.com"'))
 path = os.getcwd()
 
 # Define the contract ABI and address
