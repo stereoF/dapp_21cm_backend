@@ -1,4 +1,4 @@
-# Dapp_21cm Decentralized paper publishing Front-end project.
+# Dapp_21cm Decentralized paper publishing back-end project.
 
 DeSci-21cm is a decentralized paper publishing platform that consists of three projects: front-end, back-end, and contracts. This repository contains the back-end project.
 
